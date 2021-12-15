@@ -57,14 +57,18 @@ fun main() {
     val pist = Pistola("pist",12, 1, "ligera",3,"pequeña")
     val rifle = Rifle("rifle",8,2,"hueca",5,"mediana")
     val baz = Bazooka("baz",10,3,"explosiva",8,"grande")
-    var map: MutableMap<String,Int> = mutableMapOf()
+    var map: MutableMap<String,ArmaDeFuego> = mutableMapOf()
     var armas = arrayOf(pist,rifle, baz)
     //No me quedó muy claro realmente lo que querías así que he metido en map el disparo, como en mi método
     //disparar devuelvo la munición que queda pues se guarda eso, la munición que queda.
     for (i in 0..5){
         var num: Int = (0..2).random()
-        var disparo = armas[num].dispara()
-        map.put(key = "Disparo$i", value = disparo)
+        map.put(key = "Disparo$i", value = armas[num])
     }
-    println(map)
+    for (it in map){
+    print("${it.value.nombre}, ")}
+    println()
+    for (i in 0..5){
+        println("${map.get("Disparo$i")?.nombre}:${map.get("Disparo$i")?.dispara()}")
+    }
 }
