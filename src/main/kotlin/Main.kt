@@ -1,3 +1,4 @@
+// Clase arma de fuego
 open class ArmaDeFuego(private val nombre: String, var municion: Int,
                        private val municionARestar: Int, private val tipoDeMunicion: String,
                        private val danio: Int, private val radio: String)
@@ -11,6 +12,7 @@ open class ArmaDeFuego(private val nombre: String, var municion: Int,
         return municion
     }
 }
+// Tipos de armas de fuego, clases que heredan de arma de fuego
 class Pistola(val nom: String ="Pistola", var municpist: Int = 15,
               val municpistARestar: Int = 1, val tipoDeMunicion: String ="Bla",
               val danio: Int = 3,  val radio: String ="Bla"):
@@ -54,11 +56,14 @@ class Bazooka(val nomb: String ="Bazooka", var municbaz: Int = 8,
     }
 }
 fun main() {
+  // Instancias de clase
     val pist = Pistola("pist",12, 1, "ligera",3,"pequeña")
     val rifle = Rifle("rifle",8,2,"hueca",5,"mediana")
     val baz = Bazooka("baz",10,3,"explosiva",8,"grande")
+    // Lista de armas
     var map: MutableMap<String,ArmaDeFuego> = mutableMapOf()
     var armas = arrayOf(pist,rifle, baz)
+    // Asignar 6 aleatoriamente a la lista
     for (i in 0..5){
         var num: Int = (0..2).random()
         map.put(key = "Disparo$i", value = armas[num])
@@ -66,6 +71,7 @@ fun main() {
     for (it in map){
     print("${it.value.nombre}, ")}
     println()
+    // Dispara cada arma
     for (i in 0..5){
         println("${map.get("Disparo$i")?.nombre}:${map.get("Disparo$i")?.dispara()}")
     }
